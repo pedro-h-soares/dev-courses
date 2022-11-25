@@ -5,17 +5,21 @@
 @include mat.core();
 
 
-$custom-app-primary: mat-palette($mat-blue);
-$custom-app-secondary: mat-palette($mat-indigo, A200, A400, 700);
+$custom-app-primary: mat-palette($mat-indigo);
+$custom-app-accent: mat-palette($mat-purple);
 $custom-app-warning: mat-palette($mat-red);
 
 $custom-theme: mat-light-theme((
   color: (
     primary: $custom-app-primary,
-    accent: $custom-app-secondary,
+    accent: $custom-app-accent,
     warn: $custom-app-warning)));
 
 @include angular-material-theme($custom-theme);
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+button:hover {
+  opacity: 80%;
+}

@@ -3,14 +3,33 @@ mat-table {
   min-width: 400px;
 }
 
-mat-header-cell {
-  font-weight: bold;
+mat-cell {
   font-size: medium;
+  color: black;
+  opacity: 70%;
+}
+
+.header-text {
+  font-size: medium;
+  font-weight: bolder;
+  color: black;
+  opacity: 70%;
 }
 
 .action-button {
   width: max-content;
-  margin: 0.2em
+  margin: 0.1em;
+  color: dimgray;
+}
+
+.delete-button:hover {
+  opacity: unset;
+  color: red;
+}
+
+.edit-button:hover {
+  opacity: unset;
+  color: blue;
 }
 
 .name-column {

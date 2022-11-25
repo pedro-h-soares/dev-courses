@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { CoursesService } from '../../services/courses.service';
@@ -15,8 +15,8 @@ export class CourseFormComponent implements OnInit {
 
   form = this.formBuilder.group({
       _id: [''],
-      name: [''],
-      category: ['']
+      name: ['', Validators.required],
+      category: ['', Validators.required]
     });
 
   categories: string[] = [];
@@ -34,8 +34,14 @@ export class CourseFormComponent implements OnInit {
   }
 
   onSubmit() {
-    this.service.save(this.form.value)
-      .subscribe(result => this.onSuccess(), error => this.onError());
+    if(this.form.valid) {
+      this.service.save(this.form.value)
+        .subscribe(result => this.onSuccess(), error => this.onError());
+    }
+    else {
+      this.form.markAllAsTouched();
+      console.log('Invalid form fields');
+    }
   }
 
   onCancel() {

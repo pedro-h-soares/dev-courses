@@ -1,11 +1,32 @@
+$min-card-width: 400px;
+
 mat-card {
   max-width: 80%;
   margin: 2em auto;
   text-align: center;
+  min-width: $min-card-width;
 }
 
-.full-width {
-  width: 100%;
+form {
+  padding: 10px;
+  text-align: left;
+}
+
+mat-card-actions {
+  padding: 10px;
+  margin: auto;
+  text-align: start;
+}
+
+.name-field {
+  margin-right: 20px;
+  width: 60%;
+  min-width: $min-card-width - 20px;
+}
+
+.category-field {
+  width: 20%;
+  min-width: 100px;
 }
 
 .min-width {
