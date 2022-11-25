@@ -1,0 +1,49 @@
+<mat-table [dataSource]="courses">
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <mat-header-cell *matHeaderCellDef class="name-column">Curso</mat-header-cell>
+    <mat-cell *matCellDef="let course" class="name-column">{{ course.name }}</mat-cell>
+  </ng-container>
+
+  <!-- Category Column -->
+  <ng-container matColumnDef="category">
+    <mat-header-cell *matHeaderCellDef class="category-column">Categoria</mat-header-cell>
+    <mat-cell *matCellDef="let course" class="category-column">
+      <mat-icon aria-hidden="false" aria-label="Categoria do Curso"
+        matTooltip="{{course.category}}"
+        matTooltipPosition="after">
+        {{course.category | category}}
+      </mat-icon>
+    </mat-cell>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <mat-header-cell *matHeaderCellDef class="action-column">
+      <button mat-mini-fab color="accent" aria-label="Adicionar um curso"
+        matTooltip="Adicionar curso"
+        matTooltipPosition="after">
+        <mat-icon (click)="onAdd()">add</mat-icon>
+      </button>
+    </mat-header-cell>
+
+    <mat-cell *matCellDef="let course" class="action-column">
+      <button mat-icon-button color="primary" aria-label="Editar curso"
+        matTooltip="Editar curso"
+        matTooltipPosition="before"
+        class="action-button">
+        <mat-icon (click)="onEdit(course)">edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn" aria-label="Deletar curso"
+        matTooltip="Deletar curso"
+        matTooltipPosition="after"
+        class="action-button">
+        <mat-icon (click)="onDelete(course)">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
